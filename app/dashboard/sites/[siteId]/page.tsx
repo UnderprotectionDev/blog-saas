@@ -1,20 +1,61 @@
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { Book, FileIcon, PlusCircle, Settings } from "lucide-react";
+import {
+  Book,
+  FileIcon,
+  MoreHorizontal,
+  PlusCircle,
+  Settings,
+} from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from "@/components/ui/table";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 async function getData(userId: string, siteId: string) {
-  const data = await prisma.post.findMany({
-    where: { userId: userId, siteId: siteId },
-    select: {
-      id: true,
-      title: true,
-      image: true,
-      createdAt: true,
+  const data = await prisma.site.findUnique({
+    where: {
+      id: siteId,
+      userId: userId,
     },
-    orderBy: { createdAt: "desc" },
+    select: {
+      subdirectory: true,
+      posts: {
+        select: {
+          image: true,
+          title: true,
+          createdAt: true,
+          id: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+    },
   });
 
   return data;
@@ -54,7 +95,7 @@ export default async function SiteRoute({
         </Button>
       </div>
 
-      {data === undefined || data.length === 0 ? (
+      {data?.posts === undefined || data.posts.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50">
           <div className="flex size-20 items-center justify-center rounded-full border bg-primary/10">
             <FileIcon className="size-10 text-primary" />
@@ -75,9 +116,85 @@ export default async function SiteRoute({
           </Button>
         </div>
       ) : (
-        <div>
-          <p>Posts</p>
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Articles</CardTitle>
+            <CardDescription>
+              Manage your Articles in a simple and intuitive interface
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Image</TableHead>
+                  <TableHead>Title</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Created At</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {data?.posts.map((item) => (
+                  <TableRow key={item.id}>
+                    <TableCell>
+                      <Image
+                        src={item.image}
+                        alt={"Article Cover Image"}
+                        width={64}
+                        height={64}
+                        className="size-16 rounded-md object-cover"
+                      />
+                    </TableCell>
+
+                    <TableCell className="font-medium">{item.title}</TableCell>
+
+                    <TableCell>
+                      <Badge variant={"outline"} className="bg-green-500/10">
+                        Published
+                      </Badge>
+                    </TableCell>
+
+                    <TableCell>
+                      {new Intl.DateTimeFormat("en-US", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      }).format(item.createdAt)}
+                    </TableCell>
+
+                    <TableCell className="text-end">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button size="icon" variant="ghost">
+                            <MoreHorizontal className="size-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem asChild>
+                            <Link
+                              href={`/dashboard/sites/${siteId}/${item.id}`}
+                            >
+                              Edit
+                            </Link>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <Link
+                              href={`/dashboard/sites/${siteId}/${item.id}/delete`}
+                            >
+                              Delete
+                            </Link>
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
       )}
     </>
   );
