@@ -11,12 +11,12 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
 import { CreateSiteAction } from "@/app/actions";
 import { useForm } from "@conform-to/react";
 import { siteSchema } from "@/app/utils/zod-schemas";
 import { parseWithZod } from "@conform-to/zod";
+import { SubmitButton } from "@/app/components/dashboard/submit-button";
 
 export default function NewSiteRoute() {
   const [lastResult, action] = useActionState(CreateSiteAction, undefined);
@@ -82,7 +82,7 @@ export default function NewSiteRoute() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Submit</Button>
+            <SubmitButton text="Submit" />
           </CardFooter>
         </form>
       </Card>

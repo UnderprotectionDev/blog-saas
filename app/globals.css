@@ -67,3 +67,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Code block styles */
+.ProseMirror pre {
+  @apply bg-[hsl(var(--code-bg))] text-[hsl(var(--code-color))] p-4 rounded-lg;
+}
+
+.ProseMirror code {
+  @apply text-[hsl(var(--code-color))];
+}
