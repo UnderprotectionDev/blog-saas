@@ -82,7 +82,7 @@ export default function NewSiteRoute() {
             </div>
           </CardContent>
           <CardFooter>
-            <SubmitButton text="Submit" />
+            <SubmitButton text="Create Site" />
           </CardFooter>
         </form>
       </Card>

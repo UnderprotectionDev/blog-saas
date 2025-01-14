@@ -32,7 +32,7 @@ export default async function ArticleEditRoute({
 }: {
   params: { siteId: string; articleId: string };
 }) {
-  const { siteId, articleId } = params;
+  const { siteId, articleId } = await params;
   const data = await getData(articleId);
   return (
     <div>
