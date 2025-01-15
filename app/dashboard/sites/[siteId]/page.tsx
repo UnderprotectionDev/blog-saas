@@ -80,7 +80,7 @@ export default async function SiteRoute({
     <>
       <div className="flex w-full justify-end gap-x-4">
         <Button asChild variant={"secondary"}>
-          <Link href={`#`}>
+          <Link href={`/blog/${data?.subdirectory}`}>
             <Book className="size-4" /> View Blog
           </Link>
         </Button>
