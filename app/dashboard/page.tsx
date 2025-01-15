@@ -15,7 +15,7 @@ import { EmptyState } from "../components/dashboard/forms/empty-state";
 
 async function getData(userId: string) {
   const [sites, articles] = await Promise.all([
-    prisma.site.findFirst({
+    prisma.site.findMany({
       where: {
         userId: userId,
       },
