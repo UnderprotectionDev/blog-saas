@@ -30,7 +30,7 @@ async function getData(postId: string) {
 export default async function ArticleEditRoute({
   params,
 }: {
-  params: { siteId: string; articleId: string };
+  params: Promise<{ siteId: string; articleId: string }>;
 }) {
   const { siteId, articleId } = await params;
   const data = await getData(articleId);
