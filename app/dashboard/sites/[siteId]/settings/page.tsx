@@ -15,7 +15,7 @@ import { SubmitButton } from "@/app/components/dashboard/submit-button";
 export default async function SiteSettingsRoute({
   params,
 }: {
-  params: { siteId: string };
+  params: Promise<{ siteId: string }>;
 }) {
   const { siteId } = await params;
   return (
