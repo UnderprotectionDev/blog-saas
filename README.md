@@ -116,21 +116,25 @@ Visit [http://localhost:3000](http://localhost:3000) to see your application
 
 ![Dashboard View](/public/project-image/dashboard.png)
 
-### Sites Management
+### Sites View
 
-![Sites Management](/public/project-image/sites.png)
+![Sites View](/public/project-image/sites.png)
 
-### View Blog
+### Blog View
 
-![View Blog](/public/project-image/view-blog.png)
+![Blog View](/public/project-image/blog-view.png)
+
+### Articles View
+
+![Articles View](/public/project-image/articles-view.png)
 
 ### Article Creation
 
 ![Article Creation](/public/project-image/create-article.png)
 
-### Article View
+### Article Page
 
-![Article View](/public/project-image/article-page.png)
+![Article Page](/public/project-image/article-page.png)
 
 ### Pricing Plans
 
