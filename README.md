@@ -53,7 +53,7 @@ cd blog-saas
 npm install
 
 # Set up environment variables
-cp .env.example .env.local
+cp .env
 
 # Set up the database
 npx prisma generate
