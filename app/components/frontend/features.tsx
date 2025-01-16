@@ -4,25 +4,25 @@ const features = [
   {
     name: "Sign up for free",
     description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
+      "Start your blogging journey without any cost. Create an account in seconds and begin sharing your ideas with the world immediately.",
     icon: CloudRain,
   },
   {
     name: "Balzing fast",
     description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
+      "Experience lightning-fast performance with our optimized platform. Your blog loads instantly, keeping your readers engaged and improving SEO rankings.",
     icon: CloudRain,
   },
   {
     name: "Super secure with Kinde",
     description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
+      "Your data is protected with enterprise-grade security powered by Kinde authentication. Rest easy knowing your blog is safe from unauthorized access.",
     icon: CloudRain,
   },
   {
     name: "Easy to use",
     description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
+      "Our intuitive interface makes blogging a breeze. No technical knowledge required - just focus on creating great content while we handle the rest.",
     icon: CloudRain,
   },
 ];

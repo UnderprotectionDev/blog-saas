@@ -7,7 +7,7 @@ import {
   RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "@/components/ui/button";
-// import HeroImage from "@/public/hero.png";
+import HeroImage from "@/public/hero.png";
 
 export function Hero() {
   return (
@@ -119,13 +119,13 @@ export function Hero() {
                 </filter>
               </defs>
             </svg>
-            {/* 
+
             <Image
               src={HeroImage}
               alt="Hero image"
               priority
               className="relative object-cover w-full border rounded-lg shadow-2xl lg:rounded-2xl"
-            /> */}
+            />
           </div>
         </div>
       </section>
